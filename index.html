@@ -12746,7 +12746,7 @@ s: two
     
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addLast</span><span class="o">(</span><span class="n">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">last</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;(</span><span class="n">e</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span> <span class="c1">// the last points to null</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span>      <span class="n">isEmpty</span><span class="o">())</span> <span class="o">{</span>
             <span class="n">head</span> <span class="o">=</span> <span class="n">last</span><span class="o">;</span>
         <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
             <span class="n">tail</span><span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="n">last</span><span class="o">);</span>
@@ -12886,7 +12886,7 @@ s: 2
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-groovy"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
@@ -13052,7 +13052,7 @@ s: 2
             <span class="n">curr</span> <span class="o">=</span> <span class="n">DoublyLinkedList</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span> <span class="c1">// groovy</span>
         <span class="o">}</span>
         
-        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">boolean</span>  <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
             <span class="k">return</span> <span class="n">curr</span> <span class="o">!=</span> <span class="n">DoublyLinkedList</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">trailer</span><span class="o">;</span>
         <span class="o">}</span>
         
@@ -13069,84 +13069,116 @@ s: 2
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>org.codehaus.groovy.runtime.metaclass.MissingMethodExceptionNoStack: No signature of method: DoublyLinkedList.main() is applicable for argument types: ([Ljava.lang.String;) values: [[]]
+Possible solutions: min(), min(java.util.Comparator), min(groovy.lang.Closure), wait(), max(), tail()
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>No Outputs</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-groovy"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedListTester</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="n">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="mi">20010</span><span class="o">);</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="mi">20010</span><span class="o">);</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">// create your own LinkedList</span>
-		<span class="c1">//SinglyLinkedList ll = new SinglyLinkedList();</span>
-        <span class="n">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ll</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// create your own LinkedList</span>
+        <span class="c1">//SinglyLinkedList ll = new SinglyLinkedList();</span>
+        <span class="n">DoublyLinkedList</span> <span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ll</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
         <span class="c1">//LinkedList&lt;String&gt; ll = new LinkedList&lt;String&gt;();</span>
 
-		<span class="c1">// lets create an array of String&#39;s</span>
-		<span class="c1">// and fill our list with a random sample of the data</span>
-		<span class="c1">//String[] data = { &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot;, &quot;seven&quot;, &quot;eight&quot;, &quot;nine&quot;, &quot;ten&quot; };</span>
-		<span class="n">String</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;one&quot;</span><span class="o">,</span> <span class="s2">&quot;two&quot;</span><span class="o">,</span> <span class="s2">&quot;three&quot;</span><span class="o">,</span> <span class="s2">&quot;four&quot;</span><span class="o">,</span> <span class="s2">&quot;five&quot;</span><span class="o">,</span> <span class="s2">&quot;six&quot;</span><span class="o">,</span> <span class="s2">&quot;seven&quot;</span><span class="o">,</span> <span class="s2">&quot;eight&quot;</span><span class="o">,</span> <span class="s2">&quot;nine&quot;</span><span class="o">,</span> <span class="s2">&quot;ten&quot;</span><span class="o">]</span> <span class="k">as</span> <span class="n">String</span><span class="o">[];</span>
+        <span class="c1">// lets create an array of String&#39;s</span>
+        <span class="c1">// and fill our list with a random sample of the data</span>
+        <span class="c1">//String[] data = { &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot;, &quot;seven&quot;, &quot;eight&quot;, &quot;nine&quot;, &quot;ten&quot; };</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;one&quot;</span><span class="o">,</span> <span class="s2">&quot;two&quot;</span><span class="o">,</span> <span class="s2">&quot;three&quot;</span><span class="o">,</span> <span class="s2">&quot;four&quot;</span><span class="o">,</span> <span class="s2">&quot;five&quot;</span><span class="o">,</span> <span class="s2">&quot;six&quot;</span><span class="o">,</span> <span class="s2">&quot;seven&quot;</span><span class="o">,</span> <span class="s2">&quot;eight&quot;</span><span class="o">,</span> <span class="s2">&quot;nine&quot;</span><span class="o">,</span> <span class="s2">&quot;ten&quot;</span><span class="o">]</span> <span class="k">as</span> <span class="n">String</span><span class="o">[];</span>
 
-		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">ll</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">)]);</span>
-		<span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">ll</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">)]);</span>
+        <span class="o">}</span>
 
-		<span class="c1">// now, call each function in the API, choosing at random </span>
-		<span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
-		<span class="c1">//String[] procs = { &quot;addFirst&quot;, &quot;addLast&quot;, &quot;removeFirst&quot;, &quot;removeLast&quot;, &quot;addBefore&quot;, &quot;remove&quot; };</span>
-		<span class="n">String</span><span class="o">[]</span> <span class="n">procs</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;addFirst&quot;</span><span class="o">,</span> <span class="s2">&quot;addLast&quot;</span><span class="o">,</span> <span class="s2">&quot;removeFirst&quot;</span><span class="o">,</span> <span class="s2">&quot;removeLast&quot;</span><span class="o">,</span> <span class="s2">&quot;addBefore&quot;</span><span class="o">,</span> <span class="s2">&quot;remove&quot;</span><span class="o">]</span> <span class="k">as</span> <span class="n">String</span><span class="o">[];</span>
+        <span class="c1">// now, call each function in the API, choosing at random </span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+        <span class="c1">//String[] procs = { &quot;addFirst&quot;, &quot;addLast&quot;, &quot;removeFirst&quot;, &quot;removeLast&quot;, &quot;addBefore&quot;, &quot;remove&quot; };</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">procs</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;addFirst&quot;</span><span class="o">,</span> <span class="s2">&quot;addLast&quot;</span><span class="o">,</span> <span class="s2">&quot;removeFirst&quot;</span><span class="o">,</span> <span class="s2">&quot;removeLast&quot;</span><span class="o">,</span> <span class="s2">&quot;addBefore&quot;</span><span class="o">,</span> <span class="s2">&quot;remove&quot;</span><span class="o">]</span> <span class="k">as</span> <span class="n">String</span><span class="o">[];</span>
 
-		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">)];</span>
-			<span class="k">switch</span> <span class="o">(</span><span class="n">procs</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">procs</span><span class="o">.</span><span class="na">length</span><span class="o">)])</span> <span class="o">{</span>
-			<span class="k">case</span> <span class="s2">&quot;addFirst&quot;</span><span class="o">:</span>
-				<span class="n">ll</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="k">case</span> <span class="s2">&quot;addLast&quot;</span><span class="o">:</span>
-				<span class="n">ll</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="k">case</span> <span class="s2">&quot;removeFirst&quot;</span><span class="o">:</span>
-				<span class="k">if</span> <span class="o">(!</span><span class="n">ll</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
-					<span class="n">ll</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">();</span>
-				<span class="o">}</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="k">case</span> <span class="s2">&quot;removeLast&quot;</span><span class="o">:</span>
-				<span class="k">if</span> <span class="o">(!</span><span class="n">ll</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
-					<span class="n">ll</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>
-				<span class="o">}</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="k">case</span> <span class="s2">&quot;remove&quot;</span><span class="o">:</span>
-				<span class="n">ll</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="k">case</span> <span class="s2">&quot;addBefore&quot;</span><span class="o">:</span>
-				<span class="c1">// if you have a positional add() then do this:</span>
-				<span class="c1">// ll.add(random.nextInt(ll.size()), s);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">)];</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">procs</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">procs</span><span class="o">.</span><span class="na">length</span><span class="o">)])</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="s2">&quot;addFirst&quot;</span><span class="o">:</span>
+                <span class="n">ll</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;addLast&quot;</span><span class="o">:</span>
+                <span class="n">ll</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;removeFirst&quot;</span><span class="o">:</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">ll</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="n">ll</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;removeLast&quot;</span><span class="o">:</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">ll</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="n">ll</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;remove&quot;</span><span class="o">:</span>
+                <span class="n">ll</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;addBefore&quot;</span><span class="o">:</span>
+                <span class="c1">// if you have a positional add() then do this:</span>
+                <span class="c1">// ll.add(random.nextInt(ll.size()), s);</span>
 
-				<span class="c1">// if you have a key-based add do this</span>
-				<span class="c1">// String key = data[random.nextInt(data.length)];</span>
-				<span class="c1">// ll.addBefore(key, s);</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="k">default</span><span class="o">:</span>
-				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;unknown&quot;</span><span class="o">);</span>
-				<span class="k">break</span><span class="o">;</span>
-			<span class="o">}</span>
-		<span class="o">}</span>
+                <span class="c1">// if you have a key-based add do this</span>
+                <span class="c1">// String key = data[random.nextInt(data.length)];</span>
+                <span class="c1">// ll.addBefore(key, s);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;unknown&quot;</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
 
-		<span class="c1">// print out the size of the list and the elements...</span>
-		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;size(ll): &quot;</span> <span class="o">+</span> <span class="n">ll</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
-		<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">ll</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;ll -&gt; &quot;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
+        <span class="c1">// print out the size of the list and the elements...</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;size(ll): &quot;</span> <span class="o">+</span> <span class="n">ll</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">ll</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;ll -&gt; &quot;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="n">test1</span><span class="o">();</span>
-	<span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">test1</span><span class="o">();</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 
@@ -13198,7 +13230,7 @@ ll -&gt; six
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[2]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13209,6 +13241,466 @@ ll -&gt; six
 
 </div>
 
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Implementing-the-List-ADT">Implementing the List ADT<a class="anchor-link" href="#Implementing-the-List-ADT">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Java interface to your linked list should now look something like this:</p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">addFirst</span><span class="o">(</span><span class="n">E</span> <span class="n">element</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addLast</span><span class="o">(</span><span class="n">E</span> <span class="n">element</span><span class="o">);</span>
+<span class="kd">public</span> <span class="n">E</span> <span class="nf">removeFirst</span><span class="o">();</span>
+<span class="kd">public</span> <span class="n">E</span> <span class="nf">removeLast</span><span class="o">();</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="n">E</span> <span class="n">element</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">();</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">();</span>
+</pre></div>
+<p>The List ADT given in the lecture is this:</p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">();</span> <span class="c1">// Returns the number of elements in the list</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">();</span> <span class="c1">// Returns a boolean indicating whether the list is empty</span>
+<span class="kd">public</span> <span class="n">E</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">);</span> <span class="c1">// Returns the element of the list with index I, error condition occurs if i is outside the range [0, size()-1]</span>
+<span class="kd">public</span> <span class="n">E</span> <span class="nf">set</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">E</span> <span class="n">e</span><span class="o">);</span> <span class="c1">// Replaces the element at index i with e, and returns the old element that was replaced; an error occurs if i is not in range [0, size()-1]</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">E</span> <span class="n">e</span><span class="o">);</span> <span class="c1">// Inserts a new element e into the list at index i, moving all subsequent elements one index later in the list; an error occurs if i is not in range [0, size()-1]</span>
+<span class="kd">public</span> <span class="n">E</span> <span class="nf">remove</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">);</span> <span class="c1">// Removes and returns the element at index i, moving all subsequent elements one index earlier in the list; an error occurs if i is not in range [0, size()-1]</span>
+</pre></div>
+<p>With a small bit of modification we can also implement this ADT. The key addition is to be able to access elements at an index <code>i</code>.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-groovy"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="n">E</span> <span class="n">element</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">next</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">prev</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="n">E</span> <span class="n">element</span><span class="o">,</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">prev</span><span class="o">,</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">element</span> <span class="o">=</span> <span class="n">element</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">prev</span> <span class="o">=</span> <span class="n">prev</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="n">E</span> <span class="nf">getElement</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">element</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">getNext</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">getPrev</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">prev</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kt">void</span> <span class="nf">setElement</span><span class="o">(</span><span class="n">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">element</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kt">void</span> <span class="nf">setNext</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kt">void</span> <span class="nf">setPrev</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">prev</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">prev</span> <span class="o">=</span> <span class="n">prev</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">header</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">trailer</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">DoublyLinkedList</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;(</span><span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">trailer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;(</span><span class="kc">null</span><span class="o">,</span> <span class="n">header</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">header</span><span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="n">trailer</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">size</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="n">E</span> <span class="nf">first</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">header</span><span class="o">.</span><span class="na">getNext</span><span class="o">().</span><span class="na">getElement</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="n">E</span> <span class="nf">last</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">trailer</span><span class="o">.</span><span class="na">getPrev</span><span class="o">().</span><span class="na">getElement</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// the internal addBetween function makes the addition functions a lot easier</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addBetween</span><span class="o">(</span><span class="n">E</span> <span class="n">e</span><span class="o">,</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">pred</span><span class="o">,</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">succ</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// create and link a new node</span>
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;(</span><span class="n">e</span><span class="o">,</span> <span class="n">pred</span><span class="o">,</span> <span class="n">succ</span><span class="o">);</span>
+        <span class="n">pred</span><span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="n">newNode</span><span class="o">);</span>
+        <span class="n">succ</span><span class="o">.</span><span class="na">setPrev</span><span class="o">(</span><span class="n">newNode</span><span class="o">);</span>
+        <span class="n">size</span><span class="o">++;</span>
+      <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addLast</span><span class="o">(</span><span class="n">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">addBetween</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="n">trailer</span><span class="o">.</span><span class="na">getPrev</span><span class="o">(),</span> <span class="n">trailer</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addFirst</span><span class="o">(</span><span class="n">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">addBetween</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="n">header</span><span class="o">,</span> <span class="n">header</span><span class="o">.</span><span class="na">getNext</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="n">E</span> <span class="nf">removeFirst</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">removeNode</span><span class="o">(</span><span class="n">header</span><span class="o">.</span><span class="na">getNext</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="n">E</span> <span class="nf">removeLast</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">removeNode</span><span class="o">(</span><span class="n">trailer</span><span class="o">.</span><span class="na">getPrev</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="cm">/*</span>
+<span class="cm">    * Removes the first occurrence of the specified element from this list,</span>
+<span class="cm">    * if it is present.  If this list does not contain the element, it is</span>
+<span class="cm">    * unchanged.</span>
+<span class="cm">    */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="n">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">curr</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span> <span class="n">curr</span> <span class="o">!=</span> <span class="n">trailer</span><span class="o">;</span> <span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="na">getNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">curr</span><span class="o">.</span><span class="na">getElement</span><span class="o">()))</span> <span class="o">{</span>
+                <span class="n">removeNode</span><span class="o">(</span><span class="n">curr</span><span class="o">);</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="n">E</span> <span class="nf">removeNode</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">node</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">pred</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">getPrev</span><span class="o">();</span>
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">succ</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span>
+        <span class="n">pred</span><span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="n">succ</span><span class="o">);</span>
+        <span class="n">succ</span><span class="o">.</span><span class="na">setPrev</span><span class="o">(</span><span class="n">pred</span><span class="o">);</span>
+        <span class="n">size</span><span class="o">--;</span>
+        <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="na">getElement</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// List ADT</span>
+    <span class="kd">public</span> <span class="n">E</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checkElementIndex</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nf">node</span><span class="o">(</span><span class="n">index</span><span class="o">).</span><span class="na">getElement</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkElementIndex</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">))</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IndexOutOfBoundsException</span><span class="o">(</span><span class="s2">&quot;OOPS! Index: &quot;</span><span class="o">+</span><span class="n">index</span><span class="o">+</span><span class="s2">&quot;, Size: &quot;</span><span class="o">+</span><span class="n">size</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">node</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">index</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">E</span> <span class="n">element</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checkPositionIndex</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">addLast</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="n">node</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+            <span class="n">addBetween</span><span class="o">(</span><span class="n">element</span><span class="o">,</span> <span class="n">n</span><span class="o">.</span><span class="na">getPrev</span><span class="o">(),</span> <span class="n">n</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkPositionIndex</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="n">size</span><span class="o">))</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IndexOutOfBoundsException</span><span class="o">(</span><span class="s2">&quot;OOPS! Index: &quot;</span><span class="o">+</span><span class="n">index</span><span class="o">+</span><span class="s2">&quot;, Size: &quot;</span><span class="o">+</span><span class="n">size</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="n">E</span> <span class="nf">remove</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checkElementIndex</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nf">removeNode</span><span class="o">(</span><span class="n">node</span><span class="o">(</span><span class="n">index</span><span class="o">));</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="n">E</span> <span class="nf">set</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">E</span> <span class="n">element</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checkElementIndex</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="n">node</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+        <span class="n">E</span> <span class="n">oldVal</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">getElement</span><span class="o">();</span>
+        <span class="n">n</span><span class="o">.</span><span class="na">setElement</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">oldVal</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// make a toString() method:</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s2">&quot;[ size(&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">size</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s2">&quot;)&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s2">&quot;\n&quot;</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">E</span> <span class="n">s</span> <span class="o">:</span> <span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s2">&quot;=&gt; &quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">s</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s2">&quot;\n&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s2">&quot;]&quot;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">iterator</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">ListIterator</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">class</span> <span class="nc">ListIterator</span> <span class="kd">implements</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">curr</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">ListIterator</span><span class="o">()</span> <span class="o">{</span>
+            <span class="c1">// curr = head;</span>
+            <span class="n">curr</span> <span class="o">=</span> <span class="n">DoublyLinkedList</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">header</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span> <span class="c1">// groovy</span>
+        <span class="o">}</span>
+        
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">curr</span> <span class="o">!=</span> <span class="n">DoublyLinkedList</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">trailer</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kd">public</span> <span class="n">E</span> <span class="nf">next</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">E</span> <span class="n">res</span> <span class="o">=</span> <span class="o">(</span><span class="n">E</span><span class="o">)</span> <span class="n">curr</span><span class="o">.</span><span class="na">getElement</span><span class="o">();</span>
+            <span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span>
+            <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>org.codehaus.groovy.runtime.metaclass.MissingMethodExceptionNoStack: No signature of method: DoublyLinkedList.main() is applicable for argument types: ([Ljava.lang.String;) values: [[]]
+Possible solutions: min(), min(java.util.Comparator), min(groovy.lang.Closure), wait(), max(), tail()
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>No Outputs</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-groovy"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedListTester</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="mi">20010</span><span class="o">);</span>
+
+        <span class="c1">// create your own LinkedList</span>
+        <span class="n">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ll</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+        <span class="c1">//LinkedList&lt;String&gt; ll = new LinkedList&lt;String&gt;();</span>
+
+        <span class="c1">// lets create an array of String&#39;s</span>
+        <span class="c1">// and fill our list with a random sample of the data</span>
+        <span class="c1">//String[] data = { &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot;, &quot;seven&quot;, &quot;eight&quot;, &quot;nine&quot;, &quot;ten&quot; };</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;one&quot;</span><span class="o">,</span> <span class="s2">&quot;two&quot;</span><span class="o">,</span> <span class="s2">&quot;three&quot;</span><span class="o">,</span> <span class="s2">&quot;four&quot;</span><span class="o">,</span> <span class="s2">&quot;five&quot;</span><span class="o">,</span> <span class="s2">&quot;six&quot;</span><span class="o">,</span> <span class="s2">&quot;seven&quot;</span><span class="o">,</span> <span class="s2">&quot;eight&quot;</span><span class="o">,</span> <span class="s2">&quot;nine&quot;</span><span class="o">,</span> <span class="s2">&quot;ten&quot;</span><span class="o">]</span> <span class="k">as</span> <span class="n">String</span><span class="o">[];</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">//ll.addLast(data[random.nextInt(data.length)]);</span>
+            <span class="n">ll</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ll</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">ll</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;&quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s2">&quot; -&gt; &quot;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+            <span class="n">ll</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;_a&quot;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">ll</span><span class="o">.</span><span class="na">remove</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">));</span>
+        <span class="c1">// print out the size of the list and the elements...</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ll</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">test1</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0 -&gt; one
+1 -&gt; two
+2 -&gt; three
+3 -&gt; four
+4 -&gt; five
+5 -&gt; six
+6 -&gt; seven
+7 -&gt; eight
+8 -&gt; nine
+9 -&gt; ten
+[ size(9)
+=&gt; one_a0
+=&gt; two_a1
+=&gt; three_a2
+=&gt; four_a3
+=&gt; five_a4
+=&gt; seven_a6
+=&gt; eight_a7
+=&gt; nine_a8
+=&gt; ten_a9
+]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>No Outputs</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-groovy"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedListTester</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="mi">20010</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// create your own LinkedList</span>
+        <span class="c1">//SinglyLinkedList ll = new SinglyLinkedList();</span>
+        <span class="n">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ll</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DoublyLinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+        <span class="c1">//LinkedList&lt;String&gt; ll = new LinkedList&lt;String&gt;();</span>
+
+        <span class="c1">// lets create an array of String&#39;s</span>
+        <span class="c1">// and fill our list with a random sample of the data</span>
+        <span class="c1">//String[] data = { &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot;, &quot;seven&quot;, &quot;eight&quot;, &quot;nine&quot;, &quot;ten&quot; };</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;one&quot;</span><span class="o">,</span> <span class="s2">&quot;two&quot;</span><span class="o">,</span> <span class="s2">&quot;three&quot;</span><span class="o">,</span> <span class="s2">&quot;four&quot;</span><span class="o">,</span> <span class="s2">&quot;five&quot;</span><span class="o">,</span> <span class="s2">&quot;six&quot;</span><span class="o">,</span> <span class="s2">&quot;seven&quot;</span><span class="o">,</span> <span class="s2">&quot;eight&quot;</span><span class="o">,</span> <span class="s2">&quot;nine&quot;</span><span class="o">,</span> <span class="s2">&quot;ten&quot;</span><span class="o">]</span> <span class="k">as</span> <span class="n">String</span><span class="o">[];</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">ll</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">)]);</span>
+        <span class="o">}</span>
+
+        <span class="c1">// now, call each function in the API, choosing at random </span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+        <span class="c1">//String[] procs = { &quot;addFirst&quot;, &quot;addLast&quot;, &quot;removeFirst&quot;, &quot;removeLast&quot;, &quot;addBefore&quot;, &quot;remove&quot; };</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">procs</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;addFirst&quot;</span><span class="o">,</span> <span class="s2">&quot;addLast&quot;</span><span class="o">,</span> <span class="s2">&quot;removeFirst&quot;</span><span class="o">,</span> <span class="s2">&quot;removeLast&quot;</span><span class="o">,</span> <span class="s2">&quot;addBefore&quot;</span><span class="o">,</span> <span class="s2">&quot;remove&quot;</span><span class="o">,</span> <span class="s2">&quot;get&quot;</span><span class="o">,</span> <span class="s2">&quot;set&quot;</span><span class="o">]</span> <span class="k">as</span> <span class="n">String</span><span class="o">[];</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">)];</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">procs</span><span class="o">[</span><span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">procs</span><span class="o">.</span><span class="na">length</span><span class="o">)])</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="s2">&quot;addFirst&quot;</span><span class="o">:</span>
+                <span class="n">ll</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;addLast&quot;</span><span class="o">:</span>
+                <span class="n">ll</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;removeFirst&quot;</span><span class="o">:</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">ll</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="n">ll</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;removeLast&quot;</span><span class="o">:</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">ll</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="n">ll</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;remove&quot;</span><span class="o">:</span>
+                <span class="n">ll</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;addBefore&quot;</span><span class="o">:</span>
+                <span class="c1">// if you have a positional add() then do this:</span>
+                <span class="c1">// ll.add(random.nextInt(ll.size()), s);</span>
+
+                <span class="c1">// if you have a key-based add do this</span>
+                <span class="c1">// String key = data[random.nextInt(data.length)];</span>
+                <span class="c1">// ll.addBefore(key, s);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;get&quot;</span><span class="o">:</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="s2">&quot;set&quot;</span><span class="o">:</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;unknown&quot;</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="c1">// print out the size of the list and the elements...</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;size(ll): &quot;</span> <span class="o">+</span> <span class="n">ll</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">ll</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;ll -&gt; &quot;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">test1</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
