@@ -4,3 +4,6 @@
 [submodule "comp20010/reveal.js"]
 	path = comp20010/reveal.js
 	url = https://github.com/hakimel/reveal.js.git
+[submodule "towers_of_hanoi/reveal.js"]
+	path = towers_of_hanoi/reveal.js
+	url = https://github.com/hakimel/reveal.js.git
