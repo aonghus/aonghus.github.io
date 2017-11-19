@@ -13,3 +13,6 @@
 [submodule "comp20010_biginteger/reveal.js"]
 	path = comp20010_biginteger/reveal.js
 	url = https://github.com/hakimel/reveal.js.git
+[submodule "comp20010_exercises/reveal.js"]
+	path = comp20010_exercises/reveal.js
+	url = https://github.com/hakimel/reveal.js.git
