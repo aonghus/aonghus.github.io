@@ -7,3 +7,6 @@
 [submodule "towers_of_hanoi/reveal.js"]
 	path = towers_of_hanoi/reveal.js
 	url = https://github.com/hakimel/reveal.js.git
+[submodule "comp20010_strassen/reveal.js"]
+	path = comp20010_strassen/reveal.js
+	url = https://github.com/hakimel/reveal.js.git
