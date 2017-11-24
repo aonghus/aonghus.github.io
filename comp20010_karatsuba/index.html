@@ -12177,6 +12177,14 @@ base_2 = 100111</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Timing">Timing<a class="anchor-link" href="#Timing">&#182;</a></h1><p>Your Java multiplication function runs in a short amount of time (&lt; millisecond). So how do you time its execution? For some of the problems with <code>System.nanoTime()</code> check <a href="https://web.archive.org/web/20160308031939/https://blogs.oracle.com/dholmes/entry/inside_the_hotspot_vm_clocks">here</a>.</p>
 <p>One way is to time the short running function accurately, is to run it many times, then divide the total elapsed time by the total number of executions. The following code does this:</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm">     * Function for timing code.</span>
 <span class="cm">     * This calls the function `runs` times and accumulates the total time.</span>
