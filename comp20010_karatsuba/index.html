@@ -12170,6 +12170,49 @@ base_2 = 100111</code></pre>
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Timing">Timing<a class="anchor-link" href="#Timing">&#182;</a></h1><p>Your Java multiplication function runs in a short amount of time (&lt; millisecond). So how do you time its execution? For some of the problems with <code>System.nanoTime()</code> check <a href="https://web.archive.org/web/20160308031939/https://blogs.oracle.com/dholmes/entry/inside_the_hotspot_vm_clocks">here</a>.</p>
+<p>One way is to time the short running function accurately, is to run it many times, then divide the total elapsed time by the total number of executions. The following code does this:</p>
+<div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">     * Function for timing code.</span>
+<span class="cm">     * This calls the function `runs` times and accumulates the total time.</span>
+<span class="cm">     * The time per function call is then the (elapsed time) / runs.</span>
+<span class="cm">     * Use this function to produce an average function run time- useful</span>
+<span class="cm">     * for cases where the function execution time is very small.</span>
+<span class="cm">     * We execute the function repeatedly until it  n_seconds have elaspsed.</span>
+<span class="cm">     * You will have to adapt this function to your own use, to initialise</span>
+<span class="cm">     * the necessary variables correctly and call your own function in the</span>
+<span class="cm">     * inner loop.</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="nf">timeit</span><span class="o">(</span><span class="kt">int</span> <span class="n">N</span><span class="o">,</span> <span class="n">Random</span> <span class="n">rnd</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">runs</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">long</span> <span class="n">runsPerRound</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">long</span> <span class="n">begin</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="kt">long</span> <span class="n">end</span><span class="o">;</span>
+        <span class="kt">long</span> <span class="n">n_seconds</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">long</span> <span class="n">t_max</span> <span class="o">=</span> <span class="mi">1000L</span> <span class="o">*</span> <span class="n">n_seconds</span><span class="o">;</span>
+        <span class="n">BigInteger</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigInteger</span><span class="o">(</span><span class="n">N</span><span class="o">,</span> <span class="n">rnd</span><span class="o">);</span>      
+        <span class="n">BigInteger</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigInteger</span><span class="o">(</span><span class="n">N</span><span class="o">,</span> <span class="n">rnd</span><span class="o">);</span>
+
+        <span class="k">do</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">runsPerRound</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">BigInteger</span> <span class="n">res</span> <span class="o">=</span> <span class="n">Karatsuba</span><span class="o">.</span><span class="na">karatsuba</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+            <span class="n">runs</span> <span class="o">+=</span> <span class="n">runsPerRound</span><span class="o">;</span>
+            <span class="n">runsPerRound</span> <span class="o">=</span> <span class="o">(</span><span class="kt">long</span><span class="o">)(</span><span class="n">runsPerRound</span> <span class="o">*</span> <span class="mf">1.6</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">runs</span> <span class="o">&lt;</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span><span class="c1">// </span>
+                <span class="o">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">t_max</span><span class="o">)</span> <span class="o">);</span>
+        <span class="k">return</span> <span class="o">(</span><span class="mf">0.001d</span> <span class="o">*</span> <span class="o">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="o">))</span> <span class="o">/</span> <span class="n">runs</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+</div>
+</div>
 </div></section></section>
 </div>
 </div>
